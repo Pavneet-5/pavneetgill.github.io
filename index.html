@@ -2,106 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Demo Single Page Website </title>
+  <title>Demo SPA</title>
 
-  <!-- ===================== -->
-  <!-- digitalData Data Layer -->
-  <!-- ===================== -->
+  <!-- ============================= -->
+  <!-- Adobe Client Data Layer (ACDL) -->
+  <!-- ============================= -->
   <script>
-    window.digitalData = {
+    window.adobeDataLayer = window.adobeDataLayer || [];
+
+    adobeDataLayer.push({
+      event: "pageLoad",
       page: {
-        pageName: "Demo Home Page",
+        pageName: "Demo Single Page Website",
         pageType: "Single Page",
-        siteSection: "Demo Site",
+        siteSection: "Demo",
         language: "en",
         url: window.location.href
       },
-
       user: {
         userType: "Guest"
-      },
-
-      component: {
-        headerLinks: [
-          { name: "Home", position: 1 },
-          { name: "Services", position: 2 },
-          { name: "Contact", position: 3 }
-        ],
-        footerLinks: [
-          { name: "Privacy Policy", position: 1 },
-          { name: "Terms & Conditions", position: 2 },
-          { name: "Support", position: 3 }
-        ]
-      },
-
-      events: []
-    };
+      }
+    });
   </script>
 
+  <!-- ========== CSS ========== -->
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
     }
+
     header, footer {
-      background: #003366;
-      color: #fff;
+      background-color: #003366;
+      color: #ffffff;
       padding: 15px;
     }
+
     header a, footer a {
-      color: #fff;
-      margin-right: 15px;
+      color: #ffffff;
       text-decoration: none;
+      margin-right: 20px;
+      font-weight: bold;
     }
+
     section {
-      padding: 20px;
+      padding: 25px;
+      background-color: #ffffff;
+      margin: 15px;
+      border-radius: 5px;
     }
+
     button {
-      margin: 5px;
       padding: 10px 15px;
+      margin: 8px;
+      cursor: pointer;
     }
+
     form input, form textarea {
-      display: block;
-      margin-bottom: 10px;
       width: 300px;
       padding: 8px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    h1, h2 {
+      color: #003366;
     }
   </style>
-<script src="https://assets.adobedtm.com/e72b4113c11a/12bf04df74be/launch-8b8694e1da2b-development.min.js" async></script>
 </head>
 
 <body>
 
-  <!-- ========= HEADER ========= -->
+  <!-- ========== HEADER ========== -->
   <header>
     <a href="#" onclick="trackLink('Header','Home')">Home</a>
     <a href="#" onclick="trackLink('Header','Services')">Services</a>
     <a href="#" onclick="trackLink('Header','Contact')">Contact</a>
   </header>
 
-  <!-- ========= MAIN CONTENT ========= -->
+  <!-- ========== HERO / BUTTONS ========== -->
   <section>
-    <h1>Welcome to the Demo Single Page Website</h1>
-    <p>This page demonstrates a digitalData data layer implementation.</p>
+    <h1>Welcome to the Demo SPA</h1>
+    <p>This page demonstrates Adobe Client Data Layer implementation.</p>
 
-    <!-- Buttons across the page -->
     <button onclick="trackButton('Buy Now','Hero Section')">Buy Now</button>
     <button onclick="trackButton('Learn More','Hero Section')">Learn More</button>
-    <button onclick="trackButton('Subscribe','Mid Page')">Subscribe</button>
-    <button onclick="trackButton('Download','Mid Page')">Download</button>
+    <button onclick="trackButton('Subscribe','Mid Section')">Subscribe</button>
+    <button onclick="trackButton('Download','Mid Section')">Download</button>
   </section>
 
-  <!-- ========= VIDEO ========= -->
+  <!-- ========== VIDEO SECTION ========== -->
   <section>
     <h2>Watch Our Video</h2>
-    <video id="demoVideo" width="400" controls>
+    <video id="promoVideo" width="420" controls>
       <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </section>
 
-  <!-- ========= FORM ========= -->
+  <!-- ========== FORM SECTION ========== -->
   <section>
     <h2>Feedback Form</h2>
     <form id="feedbackForm">
@@ -112,62 +112,61 @@
     </form>
   </section>
 
-  <!-- ========= FOOTER ========= -->
+  <!-- ========== FOOTER ========== -->
   <footer>
     <a href="#" onclick="trackLink('Footer','Privacy Policy')">Privacy Policy</a>
     <a href="#" onclick="trackLink('Footer','Terms & Conditions')">Terms & Conditions</a>
     <a href="#" onclick="trackLink('Footer','Support')">Support</a>
   </footer>
 
-  <!-- ===================== -->
-  <!-- Interaction Tracking -->
-  <!-- ===================== -->
+  <!-- ========== JAVASCRIPT (Events) ========== -->
   <script>
     function trackLink(location, name) {
-      digitalData.events.push({
-        eventType: "linkClick",
+      adobeDataLayer.push({
+        event: "linkClick",
         link: {
-          location: location,
-          name: name
+          name: name,
+          location: location
         }
       });
-      console.log("Link Click:", digitalData.events);
+      console.log("Link Click:", adobeDataLayer);
     }
 
     function trackButton(name, location) {
-      digitalData.events.push({
-        eventType: "buttonClick",
+      adobeDataLayer.push({
+        event: "buttonClick",
         button: {
           name: name,
           location: location
         }
       });
-      console.log("Button Click:", digitalData.events);
+      console.log("Button Click:", adobeDataLayer);
     }
 
-    document.getElementById("demoVideo").addEventListener("play", function () {
-      digitalData.events.push({
-        eventType: "videoPlay",
+    document.getElementById("promoVideo").addEventListener("play", function () {
+      adobeDataLayer.push({
+        event: "videoPlay",
         video: {
-          name: "Demo Embedded Video",
+          name: "Demo Promo Video",
           action: "play"
         }
       });
-      console.log("Video Play:", digitalData.events);
+      console.log("Video Play:", adobeDataLayer);
     });
 
     document.getElementById("feedbackForm").addEventListener("submit", function () {
-      digitalData.events.push({
-        eventType: "formSubmit",
+      adobeDataLayer.push({
+        event: "formSubmit",
         form: {
           name: "Demo Feedback Form",
           questionsCount: 3,
           status: "submitted"
         }
       });
-      console.log("Form Submit:", digitalData.events);
+      console.log("Form Submit:", adobeDataLayer);
     });
   </script>
 
 </body>
 </html>
+
