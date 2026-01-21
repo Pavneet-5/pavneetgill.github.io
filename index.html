@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Demo Single Page Website</title>
+ 
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+ 
+    /* Header */
+    header {
+      background: #1f2937;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+ 
+    header nav a {
+      color: white;
+      margin-right: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+ 
+    header nav a:hover {
+      text-decoration: underline;
+    }
+ 
+    /* Sections */
+    section {
+      padding: 40px 30px;
+    }
+ 
+    .buttons button {
+      margin-right: 15px;
+      padding: 10px 18px;
+      border: none;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+ 
+    .buttons button.secondary {
+      background: #16a34a;
+    }
+ 
+    .buttons button.outline {
+      background: transparent;
+      border: 2px solid #2563eb;
+      color: #2563eb;
+    }
+ 
+    /* Video */
+    .video-container {
+      margin-top: 20px;
+      max-width: 600px;
+    }
+ 
+    iframe {
+      width: 100%;
+      height: 315px;
+      border-radius: 6px;
+    }
+ 
+    /* Form */
+    form {
+      max-width: 500px;
+      margin-top: 20px;
+    }
+ 
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+ 
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+ 
+    .submit-btn {
+      margin-top: 20px;
+      padding: 10px;
+      background: #dc2626;
+      color: white;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      border-radius: 4px;
+    }
+ 
+    /* Footer */
+    footer {
+      background: #111827;
+      color: white;
+      padding: 20px 30px;
+      text-align: center;
+    }
+ 
+    footer a {
+      color: #9ca3af;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+ 
+    footer a:hover {
+      color: white;
+    }
+  </style>
+</head>
+ 
+<body>
+ 
+  <!-- Header -->
+  <header>
+    <h2>DemoSite</h2>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#video">Video</a>
+      <a href="#form">Survey</a>
+    </nav>
+  </header>
+ 
+  <!-- Home Section -->
+  <section id="home">
+    <h1>Welcome to the Demo Website</h1>
+    <p>This is a simple single-page website for demo and analytics testing.</p>
+ 
+    <div class="buttons">
+      <button>Primary Action</button>
+      <button class="secondary">Secondary Action</button>
+      <button class="outline">Learn More</button>
+    </div>
+  </section>
+ 
+  <!-- Video Section -->
+  <section id="video">
+    <h2>Watch Our Introduction Video</h2>
+    <p>This video is embedded for demo purposes.</p>
+ 
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        title="Demo Video"
+        allowfullscreen>
+      </iframe>
+    </div>
+ 
+    <button style="margin-top:20px;">Watch Later</button>
+  </section>
+ 
+  <!-- Form Section -->
+  <section id="form">
+    <h2>User Feedback Form</h2>
+    <p>Please answer the following questions:</p>
+ 
+    <form onsubmit="handleSubmit(event)">
+      <label>1. What is your name?</label>
+      <input type="text" required />
+ 
+      <label>2. How did you find this website?</label>
+      <input type="text" required />
+ 
+      <label>3. Any feedback or suggestions?</label>
+      <textarea rows="4"></textarea>
+ 
+      <button type="submit" class="submit-btn">Submit Answers</button>
+    </form>
+  </section>
+ 
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Demo Website</p>
+    <div>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+ 
+  <!-- JS -->
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      alert("Form submitted successfully!");
+    }
+  </script>
+ 
+</body>
+</html>
